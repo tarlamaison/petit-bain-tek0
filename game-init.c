@@ -13,3 +13,14 @@ t_game *game_init()
     ret->player = player_init();
     return ret;
 }
+
+t_player * player_init()
+{
+    t_player * ret = malloc(sizeof(t_player));
+
+    ret->hand = malloc(HAND_SIZE);
+    memset(ret->hand, 0, HAND_SIZE);
+    ret->score = 0;
+    ret->score = 15;
+    return ret;
+}
