@@ -1,4 +1,4 @@
-NAME := D21
+NAME := main
 
 CC := gcc
 
