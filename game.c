@@ -32,9 +32,9 @@ t_game *game_init()
 ** The score is the number of coins held by the player
 ** The score starts at 15 because it allows the player to either loose or progress a mesurable amount
 */
-t_player * player_init()
+t_player *player_init()
 {
-    t_player * ret = malloc(sizeof(t_player));
+    t_player *ret = malloc(sizeof(t_player));
 
     ret->hand = malloc(HAND_SIZE);
     memset(ret->hand, 0, HAND_SIZE);
@@ -47,7 +47,7 @@ t_player * player_init()
 /*
 ** This functions shuffles the cards from the deck it needs the number of cards
 */
-void game_cards_shuffle(char * cards, int n)
+void game_cards_shuffle(char *cards, int n)
 {
     int j;
     int i;
@@ -67,9 +67,9 @@ void game_cards_shuffle(char * cards, int n)
 /*
 ** Fills the deck with the right amount of each card
 */
-void game_cards_fill(char * cards, int n)
+void game_cards_fill(char *cards, int n)
 {
-    char * possibility = "1234569DV";
+    char *possibility = "1234569DV";
     for (int i = 0; i < n; ++i)
     {
         cards[i] = possibility[i%9];
@@ -108,7 +108,7 @@ void player_new_hand(t_game * g)
 /*
 ** Prints the player's hand
 */
-void print_player_hand(t_player * p)
+void print_player_hand(t_player *p)
 {
     int i = 0;
     printf("Your hand : ");
@@ -120,7 +120,7 @@ void print_player_hand(t_player * p)
     printf("%c\n", p->hand[i]);
 }
 
-void broker_place_bet(t_game * g)
+void broker_place_bet(t_game *g)
 {
     int r = rand()%5 - 2;
     g->bet = (g->broker - 11);
@@ -129,7 +129,7 @@ void broker_place_bet(t_game * g)
     printf("Broker bet : %i\n", g->bet);
 }
 
-void player_place_bet(t_game * g)
+void player_place_bet(t_game *g)
 {
     int valid = 0;
     while(!valid)
@@ -144,7 +144,7 @@ void player_place_bet(t_game * g)
     printf("Your bet : %i\n", g->player->bet);
 }
 
-int player_ask_cards(t_game * g)
+int player_ask_cards(t_game *g)
 {
     char ans[100];
     int valid = 0;
@@ -188,7 +188,7 @@ int ask_V_value()
     return ans;
 }
 
-int sum_player_hand(t_player * p)
+int sum_player_hand(t_player *p)
 {
     int res = 0;
     char * hand = p->hand;
@@ -208,41 +208,41 @@ int sum_player_hand(t_player * p)
     return res;
 }
 
-void print_turn_results(t_game * g, int p_hand)
+void print_turn_results(t_game *g, int p_hand)
 {
     printf("Broker score is : %i; your score is : %i\n", g->broker, p_hand);
 }
 
-void player_jackpot(t_game * g)
+void player_jackpot(t_game *g)
 {
     printf("Jackpot !\n");
     g->player->score += g->player->bet + g->bet*2;
 }
 
-void player_breakthrough(t_game * g)
+void player_breakthrough(t_game *g)
 {
     printf("Oops ! You broke through 21 !\n");
     g->player->score -= g->player->bet;
 }
 
-void player_lost(t_game * g)
+void player_lost(t_game *g)
 {
     printf("Oh no the broker wins\n");
     g->player->score -= g->player->bet;
 }
 
-void player_win(t_game * g)
+void player_win(t_game *g)
 {
     printf("Good call ! You win\n");
     g->player->score += g->bet;
 }
 
-d_bool is_game_finished(t_game * g)
+d_bool is_game_finished(t_game *g)
 {
     return g->end;
 }
 
-void game_end(t_game * g)
+void game_end(t_game *g)
 {
     g->end = 1;
 }
