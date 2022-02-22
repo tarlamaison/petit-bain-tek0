@@ -4,12 +4,12 @@
 
 int main()
 {
-    t_game * g = game_init();
+    t_game *g = game_init();
 
     game_loop(g);
     return 0;
 }
 
-void game_loop(t_game * g)
+void game_loop(t_game *g)
 {
 }
