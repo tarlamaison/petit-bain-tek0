@@ -4,7 +4,7 @@
 
 ## `First Step`
 
-First you neeed to download the repository in .zip format. Then, extract\
+First you need to download the repository in .zip format. Then, extract\
 all the files.
 <br/><br/>
 
